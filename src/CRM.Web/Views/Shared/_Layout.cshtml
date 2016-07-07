@@ -29,6 +29,8 @@
                     <li>@(Html.ActionLink<AddClientWizardController>(p => p.Index(), "Dodaj klienta"))</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+
+                @*@(Html.Action<HomeController>(o => o.GetLoginView()))*@
             </div>
         </div>
     </div>

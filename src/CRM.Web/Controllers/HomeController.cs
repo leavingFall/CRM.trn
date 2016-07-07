@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Web.Mvc;
 using System.Security.Principal;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.Web.Mvc;
 
 namespace CRM.Web.Controllers
 {
-  public class HomeController : Controller
-  {
-    public ActionResult Index(IIdentity identity)
+    public class HomeController : Controller
     {
-      return View(identity);
-    }
+        public ActionResult Index(IIdentity identity)
+        {
+            return View(identity);
+        }
 
         public ActionResult Index2()
         {
@@ -21,17 +17,17 @@ namespace CRM.Web.Controllers
         }
 
         public ActionResult About()
-    {
-      ViewBag.Message = "Your application description page.";
+        {
+            ViewBag.Message = "Your application description page.";
 
-      return View();
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
-
-    public ActionResult Contact()
-    {
-      ViewBag.Message = "Your contact page.";
-
-      return View();
-    }
-  }
 }
