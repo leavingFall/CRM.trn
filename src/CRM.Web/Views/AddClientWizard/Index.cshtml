@@ -1,21 +1,25 @@
-﻿@using Microsoft.Web.Mvc
-@model CRM.Web.DAL.Client
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-    @using (Html.BeginForm("Add", "AddClientWizard"))
-    {
-        <span>Imie: </span>@Html.TextBoxFor(p => p.Name) <br/>
-        <span>NIP: </span>@Html.TextBoxFor(p => p.TaxId) <br/>
-
-        @Html.SubmitButton("Ok")
-    }
-</div>
-</body>
-</html>
+﻿@using CRM.Web.DAL
+@using CRM.Web.Models
+@model Client
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm())
+{
+    <h2>Index</h2>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@(Html.TextBoxFor(m => m.Name))</td>
+        </tr>
+        <tr>
+            <td>TaxId:</td>
+            <td>@(Html.TextBoxFor(c => c.TaxId))</td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>@(Html.EditorFor(c => c.Address))</td>
+        </tr>
+    </table>
+    <input type="submit" value="OK"/>
+}

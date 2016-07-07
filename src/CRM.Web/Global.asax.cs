@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using CRM.Web.App_Start;
 
 namespace CRM.Web
 {
@@ -13,12 +12,12 @@ namespace CRM.Web
     {
         protected void Application_Start()
         {
-            IocConfig.Configure();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ModelBindersConfig.Configure();
+            IocConfig.Configure();
+            BinderConfig.Configure(System.Web.Mvc.ModelBinders.Binders);
         }
     }
 }

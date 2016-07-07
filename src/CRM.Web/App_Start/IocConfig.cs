@@ -12,10 +12,12 @@ namespace CRM.Web
   {
     public static void Configure()
     {
-      IWindsorContainer container = CreateContainer();
+            //IWindsorContainer container = CreateContainer();
 
-      DependencyResolver.SetResolver(new WindsorDependencyResolver(container));
-    }
+            //TODO: Configure asp mvc to use container
+            var c = CreateContainer();
+            DependencyResolver.SetResolver(new WindsorDependencyResolver(c));
+        }
 
         private static IWindsorContainer CreateContainer()
         {
@@ -29,7 +31,6 @@ namespace CRM.Web
                 && !f.FullName.StartsWith("Microsoft"));
 
             RegisterAssemblies(container, assemblies);
-
             return container;
         }
 

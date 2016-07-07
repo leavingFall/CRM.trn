@@ -105,14 +105,12 @@
     <Compile Include="FeatureFolders\FeaturesRazorViewEngine.cs" />
     <Compile Include="FeatureFolders\FeatureFoldersConfig.cs" />
     <Compile Include="FormExtensions\HtmlExtensions.cs" />
-    <Compile Include="GrzesiekTimerAttribute\GrzesiekTimerAttribute.cs" />
     <Compile Include="HtmlHelpers\UrlBuilder.cs" />
     <Compile Include="IoC\CastleWindsor\WindsorDependencyResolver.cs" />
     <Compile Include="ManySubmitButtons\HtmlExtensions.cs" />
     <Compile Include="ManySubmitButtons\HttpMethodNameSubmitAttribute.cs" />
     <Compile Include="MultiTab\ControllerExtensionMethods.cs" />
     <Compile Include="MultiTab\GuidRoute.cs" />
-    <Compile Include="PrincipalBinding\IdentityModelBinder.cs" />
     <Compile Include="Validation\ValidationConfig.cs" />
     <None Include="app.config" />
     <Compile Include="ManySubmitButtons\SubmitActionNameConsts.cs" />

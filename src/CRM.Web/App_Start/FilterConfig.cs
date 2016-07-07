@@ -1,15 +1,14 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using AspMvc.Infrastructure.GrzesiekTimerAttribute;
 
 namespace CRM.Web
 {
-  public class FilterConfig
-  {
-    public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+    public class FilterConfig
     {
-        filters.Add(new HandleErrorAttribute());
-        filters.Add(new GrzesiekTimerAttribute());
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+            filters.Add(new LogTimeAttribute());
+        }
     }
-  }
 }

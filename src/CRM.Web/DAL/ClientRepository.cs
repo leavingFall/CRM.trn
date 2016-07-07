@@ -10,9 +10,9 @@ namespace CRM.Web.DAL
 
     static ClientRepository()
     {
-      _clients.Add(1, new Client() { Id = 1, Name = "Microsoft", TaxId = "12345678901", Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
-      _clients.Add(2, new Client() { Id = 2, Name = "Google", TaxId = "12345678903", Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
-      _clients.Add(3, new Client() { Id = 3, Name = "Apple", TaxId = "12345678902", Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
+      _clients.Add(1, new Client() { Id = 1, Name = "Microsoft", TaxId = new TaxId("12345678901"), Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
+      _clients.Add(2, new Client() { Id = 2, Name = "Google", TaxId = new TaxId("12345678903"), Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
+      _clients.Add(3, new Client() { Id = 3, Name = "Apple", TaxId = new TaxId("12345678902"), Address = new Address("Kowalskiego 30/15", "Redmont", null, null) });
     }
 
     public Client Get(int id)
@@ -42,7 +42,7 @@ namespace CRM.Web.DAL
 
     public IEnumerable<ClientSummary> GetAll()
     {
-      return _clients.Values.Select(f => new ClientSummary() { Id = f.Id, Name = f.Name, TaxId = f.TaxId.ToString()});
+      return _clients.Values.Select(f => new ClientSummary() { Id = f.Id, Name = f.Name, TaxId = f.TaxId.ToString() });
     }
 
     public IEnumerable<ClientType> GetClientTypes()

@@ -1,21 +1,18 @@
 ﻿@{
   ViewBag.Title = "Index";
 }
-
 @model IEnumerable<CRM.Web.Models.ClientSummary>
-
 <h2>Clients</h2>
 
 <table class="table table-bordered table-striped">
+  @{ int i = 1; }
+  @foreach (var client in Model)
+  {
     <tr>
-        <th>Nazwa</th>
-        <th>NIP</th>
+      <td>@i</td>
+        <td>@client.Name</td>
+        <td>@client.TaxId</td>
     </tr>
-    @foreach (var client in Model)
-    {
-        <tr>
-            <td>@client.Name</td>
-            <td>@client.TaxId</td>
-        </tr>
-    }
+    i++;
+  }
 </table>

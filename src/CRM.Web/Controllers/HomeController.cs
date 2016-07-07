@@ -1,20 +1,24 @@
-﻿using Microsoft.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
+using System.Web;
 using System.Web.Mvc;
+using Microsoft.Web.Mvc;
 
 namespace CRM.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(IIdentity identity)
+        public ActionResult Index(IPrincipal p)
         {
-            return View(identity);
+            return View(p);
         }
 
-        public ActionResult Index2()
-        {
-            return this.RedirectToAction<HomeController>(p => p.About());
-        }
+        //public ActionResult Index()
+        //{
+        //    return this.RedirectToAction<HomeController>(f => f.Index(null));
+        //}
 
         public ActionResult About()
         {

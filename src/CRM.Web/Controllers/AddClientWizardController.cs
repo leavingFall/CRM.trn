@@ -1,35 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CRM.Web.DAL;
-using CRM.Web.Model;
+using CRM.Web.Models;
+using Microsoft.Web.Mvc;
+using Microsoft.Web.Mvc.Html;
 
 namespace CRM.Web.Controllers
 {
     public class AddClientWizardController : Controller
     {
-        private readonly IClientCommandRepository _repo;
+        private IClientCommandRepository Repository { get; set; }
 
-        public AddClientWizardController(IClientCommandRepository repo)
+        public AddClientWizardController(IClientCommandRepository r)
         {
-            _repo = repo;
+            this.Repository = r;
         }
 
-        // GET: AddClientWizard
         public ActionResult Index()
         {
-            return View();
+            return View(new Client() { Name = null, TaxId = new TaxId() });
         }
+
 
         [HttpPost]
-        public ActionResult Add(Client c)
+        public ActionResult Index(Client c)
         {
-            _repo.Add(c);
-
-            return RedirectToAction("Index", "ClientList");
+            if (ModelState.IsValid)
+            {
+                if (!this.Repository.ClientExist(c.TaxId))
+                {
+                    this.Repository.Add(c);
+                }
+            }
+            return this.RedirectToAction<ClientListController>(x => x.Index());
         }
+
+        //public ActionResult Create([Bind(Prefix = "abc_")]AddClientModel m)
+        //{
+
+        //}
     }
 }

@@ -9,17 +9,19 @@ namespace CRM.Web.Controllers
 {
     public class ClientListController : Controller
     {
-        private readonly IClientCommandRepository _repo;
+        private IClientCommandRepository Repository { get; set; }
 
-        public ClientListController(IClientCommandRepository repo)
+
+        public ClientListController(IClientCommandRepository r)
         {
-            _repo = repo;
+            this.Repository = r;
         }
 
         // GET: ClientList
         public ActionResult Index()
         {
-            return View(_repo.GetAll());
+            var r = this.Repository.GetAll();
+            return View(r);
         }
     }
 }
