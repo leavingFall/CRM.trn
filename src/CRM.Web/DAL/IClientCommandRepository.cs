@@ -1,17 +1,18 @@
-using System.Collections.Generic;
 using CRM.Web.Models;
+using System.Collections.Generic;
 
 namespace CRM.Web.DAL
 {
-  public interface IClientCommandRepository
-  {
-    Client Get(int id);
-    IEnumerable<ClientSummary> GetAll();
+    public interface IClientCommandRepository
+    {
+        Client Get(int id);
 
-    void Update(Client client);
+        IEnumerable<ClientSummary> GetAll();
 
-    void Add(Client client);
+        void Update(Client client);
 
-    bool ClientExist(TaxId taxId);
-  }
+        void Add(Client client);
+
+        bool ClientExist(TaxId taxId);
+    }
 }

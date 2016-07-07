@@ -1,20 +1,17 @@
 ﻿using AspMvc.Infrastructure.IoC.CastleWindsor;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 
 namespace CRM.Web
 {
-  public class IocConfig
-  {
-    public static void Configure()
+    public class IocConfig
     {
-            //IWindsorContainer container = CreateContainer();
-
-            //TODO: Configure asp mvc to use container
+        public static void Configure()
+        {
             var c = CreateContainer();
             DependencyResolver.SetResolver(new WindsorDependencyResolver(c));
         }

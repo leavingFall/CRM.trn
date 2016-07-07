@@ -1,46 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using CRM.Application.Handlers;
 using CRM.Web.DAL;
-using CRM.Web.Models;
 using Microsoft.Web.Mvc;
-using Microsoft.Web.Mvc.Html;
+using System.Web.Mvc;
 
 namespace CRM.Web.Controllers
 {
     public class AddClientWizardController : Controller
     {
-        private IClientCommandRepository Repository { get; set; }
+        private readonly ICommandHandler<Client> _handler;
 
-        public AddClientWizardController(IClientCommandRepository r)
+        public AddClientWizardController(ICommandHandler<Client> handler)
         {
-            this.Repository = r;
+            _handler = handler;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(new Client() { Name = null, TaxId = new TaxId() });
+            return View();
         }
 
-
         [HttpPost]
-        public ActionResult Index(Client c)
+        public ActionResult Index(Client client)
         {
             if (ModelState.IsValid)
             {
-                if (!this.Repository.ClientExist(c.TaxId))
-                {
-                    this.Repository.Add(c);
-                }
+                _handler.Handle(client);
             }
+
             return this.RedirectToAction<ClientListController>(x => x.Index());
         }
+    }
 
-        //public ActionResult Create([Bind(Prefix = "abc_")]AddClientModel m)
-        //{
+    public class AddClientHandler : ICommandHandler<Client>
+    {
+        private IClientCommandRepository _repository;
 
-        //}
+        public AddClientHandler(IClientCommandRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public void Handle(Client client)
+        {
+            if (!_repository.ClientExist(client.TaxId))
+            {
+                _repository.Add(client);
+            }
+        }
     }
 }
