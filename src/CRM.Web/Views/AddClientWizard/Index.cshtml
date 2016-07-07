@@ -1,0 +1,21 @@
+﻿@using Microsoft.Web.Mvc
+@model CRM.Web.DAL.Client
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm("Add", "AddClientWizard"))
+    {
+        <span>Imie: </span>@Html.TextBoxFor(p => p.Name) <br/>
+        <span>NIP: </span>@Html.TextBoxFor(p => p.TaxId) <br/>
+
+        @Html.SubmitButton("Ok")
+    }
+</div>
+</body>
+</html>
