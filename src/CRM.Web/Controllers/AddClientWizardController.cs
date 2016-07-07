@@ -30,6 +30,18 @@ namespace CRM.Web.Controllers
 
             return this.RedirectToAction<ClientListController>(x => x.Index());
         }
+
+        [HttpPost]
+        public ActionResult Back()
+        {
+            return this.RedirectToAction<HomeController>(x => x.About());
+        }
+
+        [HttpPost]
+        public ActionResult Cancel()
+        {
+            return this.RedirectToAction<ClientListController>(x => x.Index());
+        }
     }
 
     public class AddClientHandler : ICommandHandler<Client>

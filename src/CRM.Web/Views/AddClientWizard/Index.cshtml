@@ -2,11 +2,12 @@
 @using CRM.Web.Models
 @model Client
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Add Client Wizard";
 }
 @using (Html.BeginForm())
 {
-    <h2>Index</h2>
+    <br/>
+    <h2>@ViewBag.Title</h2>
     <table>
         <tr>
             <td>Name:</td>
@@ -21,5 +22,9 @@
             <td>@(Html.EditorFor(c => c.Address))</td>
         </tr>
     </table>
-    <input type="submit" value="OK"/>
+    <br/>
+
+    <input type="submit" formaction="@Url.Action("Back")" value="Back" style="margin-right: 5px" />
+    <input type="submit" formaction="@Url.Action("Cancel")" value="Cancel" style="margin-right: 5px" />
+    <input type="submit" value="OK" style="margin-right: 5px" />
 }
