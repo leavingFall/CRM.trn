@@ -1,5 +1,9 @@
-﻿namespace CRM.Web.DAL
+﻿using CRM.Web.Models;
+using FluentValidation.Attributes;
+
+namespace CRM.Web.DAL
 {
+    [Validator(typeof(AddressModelValidator))]
     public class Address
     {
         public string Line1 { get; set; }
